@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+'use strict';
+
+var child_process = require('child_process');
+
+child_process.execSync('bin/build', { stdio : 'inherit' });
+child_process.execSync('watch bin/build app', { stdio : 'inherit' });

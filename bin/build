@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+'use strict';
+
+var child_process = require('child_process'),
+    browserify = require('browserify');
+
+child_process.execSync('rm -rf build', { stdio : 'inherit' });
+child_process.execSync('mkdir build', { stdio : 'inherit' });
+
+child_process.execSync('cp app/index.html build/index.html', { stdio : 'inherit' });
+child_process.execSync('browserify app/index.js -o build/bundle.js', { stdio : 'inherit' });
