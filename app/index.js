@@ -6,9 +6,6 @@ var state = require('app-state').init({
 
 state('duder.galt', true);
 
-console.log('Duder');
-
-
 setInterval(function() {
     state('duder.galt', !state('duder.galt'));
     console.log('setting to ', !state('duder.galt'));

@@ -7,9 +7,6 @@ var state = require('app-state').init({
 
 state('duder.galt', true);
 
-console.log('Duder');
-
-
 setInterval(function() {
     state('duder.galt', !state('duder.galt'));
     console.log('setting to ', !state('duder.galt'));
@@ -53,8 +50,11 @@ function init(options) {
         }
     };
 
-    if (setting.devTools) {
+    if (setting.devTools && global.addEventListener) {
         global.appState = instance;
+        global.addEventListener('change-app-state-from-panel', function (event) {
+            instance('', event.detail);
+        });
     }
 
     return _.extend(instance, {
@@ -213,6 +213,8 @@ function notifySubscribers(changedPath, setting, instance) {
 
     // Notify chrome extensions last
     if (setting.devTools && global.dispatchEvent) {
+        console.log('did this happen?');
+
         global.dispatchEvent(new global.CustomEvent('change-app-state', { detail : instance()} ));
     }
 
@@ -222,6 +224,7 @@ function notifySubscribers(changedPath, setting, instance) {
 function getPath(path) {
     return path ? 'data.' + path : 'data';
 }
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"lodash":3}],3:[function(require,module,exports){
 (function (global){
