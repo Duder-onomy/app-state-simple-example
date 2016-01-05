@@ -4,9 +4,9 @@ var state = require('app-state').init({
     devTools : true
 });
 
-state('duder.galt', true);
+state('app.shouldDoSomething', true);
 
 setInterval(function() {
-    state('duder.galt', !state('duder.galt'));
-    console.log('setting to ', !state('duder.galt'));
+    state('app.shouldDoSomething', !state('app.shouldDoSomething'));
+    console.log('setting to ', !state('app.shouldDoSomething'));
 }, 2000);

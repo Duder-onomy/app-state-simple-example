@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo '_______________ INSTALL GLOBAL DEPENDENCIES ____________'
+
+if ! command -v watch >/dev/null 2>&1
+    then
+        npm install -g watch
+    fi
+
+if ! command -v static >/dev/null 2>&1
+    then
+        npm install -g node-static
+    fi

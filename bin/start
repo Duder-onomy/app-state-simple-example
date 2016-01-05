@@ -3,5 +3,8 @@
 
 var child_process = require('child_process');
 
+child_process.execSync('bin/installDeps', { stdio : 'inherit' });
 child_process.execSync('bin/build', { stdio : 'inherit' });
-child_process.execSync('watch bin/build app', { stdio : 'inherit' });
+
+child_process.spawn('static', ['build'], { stdio : 'inherit' });
+child_process.spawn('watch', ['bin/build', 'app'], { stdio : 'inherit' });

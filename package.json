@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "app-state": "0.2.0-beta.2",
-    "browserify": "^12.0.1"
+    "browserify": "^12.0.1",
+    "node-static": "^0.7.7"
   }
 }
